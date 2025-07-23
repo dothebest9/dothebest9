@@ -1,0 +1,1 @@
+select name, salary from employees WHERE position ='frontend' and salary <=90000;# 프론트엔드중 연봉이90000이하인 직원 조회
