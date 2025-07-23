@@ -1,1 +1,0 @@
-DELETE table employees;#employees테이블삭제
