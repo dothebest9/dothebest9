@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="survey">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>나라별 음식 조사 </title>
+</head>
+<body>
+    <header>
+        <h1>나라별 음식 조사</h1>
+        <p>모든 항목에 빠짐 없이 체크 해주십시오.</p>
+    </header>
+    <hr>
+    <main>
+        <form>
+            <fieldset>
+                <legend>개인정보</legend>
+                <label for="name">이름</label>
+                <input type="text" id="name" placeholder="본명을 입력하세요">
+                <br>
+                <label for="email">이메일</label>
+                <input type="email" id="email" placeholder="메일 주소를 쓰세요">
+            </fieldset>
+            <fieldset>
+                <legend>설문</legend>
+                <p>성별</p>
+                <input type="radio" id="male" name="gender" value="male">
+                <label for="male">남자</label>
+                <input type="radio" id="female" name="gender" value="female">
+                <label for="female">여자</label>
+
+                <p>선호하는 나라음식을 골라주세요</p>
+                <input type="checkbox" id="한식" name="food">
+                <label for="한식">한식</label>
+                <input type="checkbox" id="일식" name="food">
+                <label for="일식">일식</label>
+                <input type="checkbox" id="중식" name="food">
+                <label for="중식">중식</label>
+                <input type="checkbox" id="양식" name="food">
+                <label for="양식">양식</label>
+
+                <p>좋아하는 음식을 골라주세요</p>
+                <input type="checkbox" id="western_steak" name="favourite_food" value="steak">
+                <label for="western_steak">스테이크</label><br>
+
+                <input type="checkbox" id="chinese_dimsum" name="favourite_food" value="dimsum">
+                <label for="chinese_dimsum">딤섬</label><br>
+
+                <input type="checkbox" id="korean_bibimbap" name="favourite_food" value="bibimbap">
+                <label for="korean_bibimbap">비빔밥</label><br>
+
+                <input type="checkbox" id="japanese_udon_soba" name="favourite_food" value="udon_soba">
+                <label for="japanese_udon_soba">우동/소바</label><br>
+
+                <input type="checkbox" id="western_hamburger" name="favourite_food" value="hamburger">
+                <label for="western_hamburger">햄버거</label><br>
+
+                <input type="checkbox" id="chinese_peking_duck" name="favourite_food" value="peking_duck">
+                <label for="chinese_peking_duck">베이징 덕</label><br>
+
+                <input type="checkbox" id="korean_samgyeopsal" name="favourite_food" value="samgyeopsal">
+                <label for="korean_samgyeopsal">삼겹살</label><br>
+
+                <input type="checkbox" id="japanese_tonkatsu" name="favourite_food" value="tonkatsu">
+                <label for="japanese_tonkatsu">돈카츠</label><br>
+
+                <input type="checkbox" id="western_pizza" name="favourite_food" value="pizza">
+                <label for="western_pizza">피자</label><br>
+
+                <input type="checkbox" id="korean_sundubujjigae" name="favourite_food" value="sundubujjigae">
+                <label for="korean_sundubujjigae">순두부찌개</label><br>
+
+                <input type="checkbox" id="chinese_fried_rice" name="favourite_food" value="fried_rice">
+                <label for="chinese_fried_rice">볶음밥</label><br>
+
+                <input type="checkbox" id="japanese_sushi" name="favourite_food" value="sushi">
+                <label for="japanese_sushi">스시</label><br>
+
+                <input type="checkbox" id="western_french_fries" name="favourite_food" value="french_fries">
+                <label for="western_french_fries">프렌치프라이</label><br>
+
+                <input type="checkbox" id="korean_bulgogi" name="favourite_food" value="bulgogi">
+                <label for="korean_bulgogi">불고기</label><br>
+
+                <input type="checkbox" id="chinese_mapo_tofu" name="favourite_food" value="mapo_tofu">
+                <label for="chinese_mapo_tofu">마파두부</label><br>
+
+                <input type="checkbox" id="japanese_tempura" name="favourite_food" value="tempura">
+                <label for="japanese_tempura">덴푸라</label><br>
+
+                <input type="checkbox" id="western_pasta" name="favourite_food" value="pasta">
+                <label for="western_pasta">파스타</label><br>
+
+                <input type="checkbox" id="korean_galbijjim" name="favourite_food" value="galbijjim">
+                <label for="korean_galbijjim">갈비찜</label><br>
+
+                <input type="checkbox" id="chinese_kung_pao_chicken" name="favourite_food" value="kung_pao_chicken">
+                <label for="chinese_kung_pao_chicken">쿵파오 치킨</label><br>
+
+            </fieldset>
+            <fieldset>
+                <legend>기타 의견</legend>
+                <textarea name="comment" id="" cols="50" rows="7"></textarea>
+            </fieldset>
+            <input type="submit">
+        </form>
+    </main>
+    <hr>
+    <footer>
+        <p>입력 하느라 수고 하셨습니다.</p>
+    </footer>
+</body>
+</html>
