@@ -1,0 +1,26 @@
+*{
+    text-align: center;
+}
+
+html{
+    background-color: khaki;
+}
+
+body{
+    width: 500px;
+    margin: auto;
+}
+
+h1{
+    font-size: 50px;
+}
+
+img{
+    width: 200px;
+    height: 200px;
+    border-radius: 100%;
+}
+
+p{
+    font-size: 0.8rem;
+}
