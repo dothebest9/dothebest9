@@ -1,0 +1,74 @@
+* {
+  box-sizing: border-box;
+}
+
+/* html과 body 태그 */
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: #eaeaea;
+}
+
+/* container id 선택자 */
+#container {
+  width: 640px;
+  margin: 60px auto 0; /* 위쪽 60px, 좌우 자동, 아래쪽 0 */
+  background-color: #ffffff;
+  border-radius: 15px;
+}
+
+/* form 태그 */
+form {
+  padding: 20px;
+  border: 1px solid #cccccc;
+  border-radius: 15px;
+}
+
+/* table 클래스 선택자 */
+.table {
+  width: 80%;
+  margin: auto;
+}
+
+/* th 태그 */
+th {
+  width: 40%;
+  text-align: right;
+  padding: 5px;
+}
+
+td {
+  width: 60%;
+  text-align: left;
+  padding-left: 5px;
+}
+
+/* input, select, textarea 태그 */
+input, select, textarea {
+  width: 240px;
+  padding: 5px;
+}
+
+/* input[type="radio"] 속성 선택자 */
+input[type="radio"] {
+  width: initial;
+}
+
+/* input[type="submit"]와 input[type="reset"] 속성 선택자 */
+input[type="submit"],
+input[type="reset"] {
+  width: 80px;
+}
+
+/* textarea 태그 */
+textarea {
+  resize: none;
+  width: 240px;
+  min-height: 100px;
+}
+
+/* buttons 클래스 선택자 */
+.buttons {
+  margin: 10px 0 0 0;
+  text-align: center;
+}
