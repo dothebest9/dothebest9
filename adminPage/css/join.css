@@ -1,0 +1,178 @@
+/*
+ * 다크 모드 기본 스타일
+ * body 태그에 'dark-mode' 클래스가 있을 때 적용되는 전역 스타일입니다.
+ */
+body.dark-mode {
+    background-color: #121212; /* 다크 모드일 때 전체 배경색을 어둡게 설정 */
+    color: #e0e0e0; /* 다크 모드일 때 전체 글자색을 밝게 설정 */
+}
+
+/*
+ * 상단 컨트롤 영역 (기본 스타일)
+ * #top-right-controls ID를 가진 요소의 레이아웃과 기본 색상을 정의합니다.
+ */
+#top-right-controls {
+    position: absolute; /* 부모 요소를 기준으로 절대 위치 지정 */
+    top: 1rem; /* 상단에서 1rem (16px) 떨어지게 설정 */
+    right: 1rem; /* 우측에서 1rem (16px) 떨어지게 설정 */
+    display: flex; /* 자식 요소들을 플렉스 박스로 정렬 */
+    flex-direction: column; /* 자식 요소들을 세로 방향으로 정렬 (위에서 아래로) */
+    align-items: flex-end; /* 자식 요소들을 컨테이너의 끝(오른쪽)에 정렬 */
+    gap: 1rem; /* 자식 요소들 사이에 0.5rem (8px)의 간격 추가 */
+    color: #6c757d; /* 기본 모드일 때 글자색을 회색으로 설정 */
+    z-index: 1000; /* 다른 요소들 위에 표시되도록 z-index를 높게 설정 */
+}
+
+/*
+ * 상단 컨트롤 영역 (다크 모드 스타일)
+ * 'dark-mode' 클래스가 body에 있을 때 #top-right-controls 및 그 자식 요소들의 색상을 변경합니다.
+ * '!important'를 사용하여 다른 규칙보다 높은 우선순위를 가집니다.
+ */
+.dark-mode #top-right-controls, /* #top-right-controls 자체에 적용 */
+.dark-mode #top-right-controls #datetime-display, /* #datetime-display ID를 가진 요소에 적용 */
+.dark-mode #top-right-controls #current-date, /* #current-date ID를 가진 요소에 적용 */
+.dark-mode #top-right-controls #current-time { /* #current-time ID를 가진 요소에 적용 */
+    color: #e0e0e0 !important; /* 다크 모드일 때 글자색을 밝게 강제 변경 */
+}
+
+
+/*
+ * 부트스트랩 버튼 다크 모드 스타일 (우선순위 강화)
+ * 부트스트랩의 기본 버튼 스타일을 다크 모드에 맞춰 덮어씁니다.
+ * '!important'를 사용하여 부트스트랩 스타일보다 우선합니다.
+ */
+.dark-mode .btn.btn-secondary { /* 'dark-mode' 클래스가 있는 body 내의 btn 및 btn-secondary 클래스에 적용 */
+    background-color: #333 !important; /* 다크 모드일 때 배경색을 어둡게 강제 변경 */
+    border-color: #555 !important; /* 다크 모드일 때 테두리 색상을 어둡게 강제 변경 */
+    color: #e0e0e0 !important; /* 다크 모드일 때 글자색을 밝게 강제 변경 */
+}
+.dark-mode .btn.btn-success { /* 'dark-mode' 클래스가 있는 body 내의 btn 및 btn-success 클래스에 적용 */
+    background-color: #333 !important; /* 다크 모드일 때 배경색을 어둡게 강제 변경 */
+    border-color: #555 !important; /* 다크 모드일 때 테두리 색상을 어둡게 강제 변경 */
+    color: #e0e0e0 !important; /* 다크 모드일 때 글자색을 밝게 강제 변경 */
+}
+
+/*
+ * 컨테이너와 폼 다크 모드 스타일
+ * 'dark-mode' 클래스가 body에 있을 때 #container와 form 요소의 스타일을 변경합니다.
+ */
+.dark-mode #container { /* 'dark-mode' 클래스가 있는 body 내의 #container ID에 적용 */
+    background-color: #1a1a1a; /* 다크 모드일 때 컨테이너 배경색을 어둡게 변경 */
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1); /* 다크 모드일 때 그림자 색상을 밝게 변경 */
+}
+.dark-mode form { /* 'dark-mode' 클래스가 있는 body 내의 form 태그에 적용 */
+    border-color: #555; /* 다크 모드일 때 폼 테두리 색상을 어둡게 변경 */
+}
+.dark-mode form label { /* 'dark-mode' 클래스가 있는 body 내의 form 태그 안의 label에 적용 */
+    color: #e0e0e0; /* 다크 모드일 때 폼 레이블 글자색을 밝게 변경 */
+}
+
+/*
+ * 폼 요소 다크 모드 스타일
+ * 'dark-mode' 클래스가 body에 있을 때 폼 컨트롤(input, select)의 스타일을 변경합니다.
+ */
+.dark-mode .form-control, /* 'dark-mode' 클래스가 있는 body 내의 form-control 클래스에 적용 */
+.dark-mode .form-select { /* 'dark-mode' 클래스가 있는 body 내의 form-select 클래스에 적용 */
+    background-color: #333; /* 다크 모드일 때 배경색을 어둡게 변경 */
+    color: #e0e0e0; /* 다크 모드일 때 글자색을 밝게 변경 */
+    border-color: #555; /* 다크 모드일 때 테두리 색상을 어둡게 변경 */
+}
+.dark-mode .form-control::placeholder { /* 'dark-mode' 클래스가 있는 body 내의 form-control 플레이스홀더에 적용 */
+    color: #aaa; /* 다크 모드일 때 플레이스홀더 글자색을 회색으로 변경 */
+}
+
+/*
+ * 전역 스타일
+ * 모든 요소에 적용되는 기본 스타일 및 HTML, body의 레이아웃을 정의합니다.
+ */
+* {
+  box-sizing: border-box; /* 모든 요소의 크기 계산 시 테두리와 패딩을 포함합니다. */
+}
+
+html, body {
+  margin: 0; /* 페이지의 기본 외부 여백 제거 */
+  padding: 0; /* 페이지의 기본 내부 여백 제거 */
+  height: 100%; /* html과 body의 높이를 뷰포트의 100%로 설정 */
+  min-height: 100vh; /* body의 최소 높이를 뷰포트 높이의 100%로 설정 (콘텐츠가 적어도 화면을 채움) */
+  background-color: #eaeaea; /* 기본 배경색을 연한 회색으로 설정 */
+  font-family: Arial, sans-serif; /* 가독성을 위해 표준 폰트를 지정 */
+}
+
+/*
+ * 컨테이너와 폼 (기존 스타일)
+ * #container와 form 태그의 기본 레이아웃과 색상을 정의합니다.
+ */
+#container {
+  width: 640px; /* 컨테이너의 너비 설정 */
+  padding: 30px; /* 컨테이너 내부 여백 설정 */
+  margin: 0px auto 0px; /* 위 60px, 좌우 중앙, 아래 20px의 외부 여백 설정 */
+  background-color: #ffffff; /* 기본 모드 배경색을 흰색으로 설정 */
+  border-radius: 15px; /* 모서리를 둥글게 설정 */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 컨테이너에 그림자 효과 추가 */
+}
+
+form {
+  padding: 20px; /* 폼 내부 여백 설정 */
+  border: 1px solid #cccccc; /* 기본 모드 테두리 색상 설정 */
+  border-radius: 15px; /* 폼 모서리를 둥글게 설정 */
+}
+
+/*
+ * 폼 요소 (기존 스타일)
+ * 폼 내부의 각 입력 필드와 레이블의 스타일을 정의합니다.
+ */
+form > div {
+  margin-bottom: 18px; /* 각 폼 필드(div) 아래에 18px의 간격 추가 */
+}
+
+form label {
+  display: block; /* 레이블을 블록 요소로 만들어 별도의 줄에 표시 */
+  margin-bottom: 5px; /* 레이블과 입력란 사이에 5px의 간격 추가 */
+  font-weight: bold; /* 레이블 글자를 굵게 설정 */
+  color: #333; /* 기본 모드 레이블 글자색 설정 */
+}
+
+input, select, textarea {
+  width: 100%; /* 입력, 선택, 텍스트 영역의 너비를 부모 요소에 꽉 차도록 설정 */
+  padding: 12px; /* 내부 여백 설정 */
+  border: 1px solid #ccc; /* 테두리 설정 */
+  border-radius: 8px; /* 모서리를 둥글게 설정 */
+  font-size: 1rem; /* 글자 크기 설정 */
+}
+
+input[type="radio"] {
+  width: initial; /* 라디오 버튼의 너비를 원래대로 되돌림 */
+  margin-right: 8px; /* 라디오 버튼과 텍스트 사이에 8px의 간격 추가 */
+}
+
+.btn-primary {
+  width: 15%; /* 기본 가입 버튼의 너비 설정 */
+  padding: 12px; /* 내부 여백 설정 */
+  margin-top: 10px; /* 위쪽 여백 설정 */
+}
+
+/*
+ * 날짜/시간 및 버튼 스타일 (기존 스타일)
+ * #datetime-display 및 그 자식 요소들의 스타일을 정의합니다.
+ */
+#datetime-display {
+    font-size: 0.8rem; /* 글자 크기 설정 */
+    color: #6c757d; /* 기본 모드 글자색 설정 */
+    text-align: right; /* 텍스트를 오른쪽 정렬 */
+}
+#datetime-display span { display: block; } /* 날짜와 시간을 별도의 줄에 표시 */
+
+.close-btn {
+    color: #aaa; /* 닫기 버튼의 기본 글자색 설정 */
+    float: right; /* 요소를 오른쪽으로 부동 정렬 */
+    font-size: 28px; /* 글자 크기 설정 */
+    font-weight: bold; /* 글자를 굵게 설정 */
+}
+.close-btn:hover, .close-btn:focus {
+    color: black; /* 호버/포커스 시 글자색을 검정으로 변경 */
+    text-decoration: none; /* 밑줄 제거 */
+    cursor: pointer; /* 마우스 오버 시 포인터 모양으로 변경 */
+}
+.dark-mode .close-btn:hover, .dark-mode .close-btn:focus {
+    color: white; /* 다크 모드에서 호버/포커스 시 글자색을 흰색으로 변경 */
+}
