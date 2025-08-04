@@ -22,81 +22,83 @@
 
     <div id="container" >
     <form id="form" action="#">
-        <div>
-            <label>아이디</label>
-            <input
-                name="id"
-                placeholder="아이디"
-                autocomplete="off"
-                required
-                class="form-control"
-            />
-        </div>
-        <div>
-            <label>비밀번호</label>
-            <input
-                type="password"
-                name="pw1"
-                placeholder="비밀번호"
-                autocomplete="off"
-                required
-                class="form-control"
-            />
-        </div>
-        <div>
-            <label>비밀번호 확인</label>
-            <input
-                type="password"
-                name="pw2"
-                placeholder="비밀번호 확인 "
-                autocomplete="off"
-                required
-                class="form-control"
-            />
-        </div>
-        <div>
-            <label>이름</label>
-            <input
-                name="name"
-                placeholder="사용자 이름"
-                autocomplete="off"
-                required
-                class="form-control"
-            />
-        </div>
-        <div>
-            <label>전화번호</label>
-            <input
-                name="phone"
-                placeholder="휴대전화 번호"
-                autocomplete="off"
-                required
-                class="form-control"
-            />
-        </div>
-        <div>
-            <label>성별</label><br>
-            <input type="radio" name="gender" value="male"  checked />남자
-            <input type="radio" name="gender" value="female" />여자
-        </div>
-        <div>
-            <label>이메일</label>
-            <input
-                title="정확한 메일 주소를 작성해주세요"
-                type="email"
-                name="email"
-                placeholder="이메일"
-                autocomplete="off"
-                required
-                class="form-control"
-            />
-        </div>
-        <div class="col-auto">
-        <button type="submit" class="btn btn-primary" title="가입"
-                onclick="congratulations()"
-        >가입</button>
-        </div>
-    </form>
+    <div>
+        <label>아이디</label>
+        <input
+            name="id"
+            placeholder="아이디"
+            autocomplete="off"
+            required
+            class="form-control"
+        />
+    </div>
+    <div>
+        <label>비밀번호</label>
+        <input
+            type="password"
+            name="pw1"
+            id="password"
+            placeholder="비밀번호"
+            autocomplete="off"
+            required
+            class="form-control"
+        />
+        <p id="pwMessage" class="validation-message"></p>
+    </div>
+    <div>
+        <label>비밀번호 확인</label>
+        <input
+            type="password"
+            name="pw2"
+            id="pwcheck"
+            placeholder="비밀번호 확인 "
+            autocomplete="off"
+            required
+            class="form-control"
+        />
+        <p id="pwCheckMessage" class="validation-message"></p>
+    </div>
+    <div>
+        <label>이름</label>
+        <input
+            name="name"
+            placeholder="사용자 이름"
+            autocomplete="off"
+            required
+            class="form-control"
+        />
+    </div>
+    <div>
+        <label>전화번호</label>
+        <input
+            name="phone"
+            placeholder="휴대전화 번호"
+            autocomplete="off"
+            required
+            class="form-control"
+        />
+    </div>
+    <div>
+        <label>성별</label><br>
+        <input type="radio" name="gender" value="male"  checked />남자
+        <input type="radio" name="gender" value="female" />여자
+    </div>
+    <div>
+        <label>이메일</label>
+        <input
+            title="정확한 메일 주소를 작성해주세요"
+            type="email"
+            name="email"
+            placeholder="이메일"
+            autocomplete="off"
+            required
+            class="form-control"
+        />
+    </div>
+    <div class="col-auto">
+    <button type="submit" class="btn btn-primary" title="가입">가입</button>
+    </div>
+</form>
     </div>
 
     <script src="js/join.js"></script>
