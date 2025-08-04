@@ -304,3 +304,44 @@ html, body {
 .dark-mode .close-btn:hover, .dark-mode .close-btn:focus {
     color: white;
 }
+
+/* 페이지네이션 버튼 스타일 */
+.pagination-btn {
+  padding: 8px 12px;
+  margin: 0 4px;
+  border: 1px solid #ddd;
+  background-color: #f8f9fa;
+  color: #333;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+/* 마우스 오버 시 스타일 */
+.pagination-btn:hover:not(:disabled) {
+  background-color: #e2e6ea;
+  border-color: #dae0e5;
+}
+
+/* 현재 페이지 버튼 스타일 */
+.pagination-btn.active {
+  background-color: #007bff; /* 부트스트랩 프라이머리 색상 */
+  color: #fff;
+  border-color: #007bff;
+  font-weight: bold;
+}
+
+/* 비활성화된 버튼 스타일 */
+.pagination-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+/* 페이지 번호 컨테이너 정렬 */
+.page-numbers {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px; /* 페이지 번호 사이의 간격 */
+  margin: 0 10px;
+}
