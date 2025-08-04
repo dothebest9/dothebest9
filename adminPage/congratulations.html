@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입 축하합니다!</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .celebration-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            z-index: 10;
+        }
+
+        .main-title {
+            font-size: 3.5rem;
+            font-weight: bold;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            margin-bottom: 20px;
+            animation: bounce 2s infinite;
+        }
+
+        .sub-title {
+            font-size: 1.5rem;
+            color: #f0f0f0;
+            margin-bottom: 30px;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 0.5s forwards;
+        }
+
+        .welcome-message {
+            font-size: 1.2rem;
+            color: #e0e0e0;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 1s forwards;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .firework {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            animation: firework 1.5s ease-out forwards;
+        }
+
+        @keyframes firework {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(20);
+                opacity: 0;
+            }
+        }
+
+        .particle {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: #ff6b6b;
+            animation: confetti-fall 3s linear infinite;
+        }
+
+        @keyframes confetti-fall {
+            0% {
+                transform: translateY(-100vh) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        .star {
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-bottom: 7px solid #ffd700;
+            transform: rotate(35deg);
+            animation: sparkle 2s ease-in-out infinite;
+        }
+
+        .star:before {
+            content: '';
+            position: absolute;
+            left: -5px;
+            top: -5px;
+            width: 0;
+            height: 0;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-bottom: 7px solid #ffd700;
+            transform: rotate(-70deg);
+        }
+
+        .star:after {
+            content: '';
+            position: absolute;
+            left: -5px;
+            top: 3px;
+            width: 0;
+            height: 0;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-bottom: 7px solid #ffd700;
+            transform: rotate(70deg);
+        }
+
+        @keyframes sparkle {
+            0%, 100% {
+                transform: rotate(35deg) scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: rotate(35deg) scale(1.5);
+                opacity: 0.7;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="celebration-container">
+        <h1 class="main-title">🎉 회원가입을 축하합니다! 🎉</h1>
+        <p class="sub-title">환영합니다!</p>
+    </div>
+
+    <script>
+        // 폭죽 효과 생성
+        function createFirework() {
+            const colors = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#f9ca24', '#f0932b', '#eb4d4b', '#6c5ce7', '#a29bfe'];
+
+            // 랜덤한 위치에서 폭죽 생성
+            const x = Math.random() * window.innerWidth;
+            const y = Math.random() * window.innerHeight * 0.7; // 상단 70% 영역에서만
+
+            // 중심 폭발점
+            const firework = document.createElement('div');
+            firework.className = 'firework';
+            firework.style.left = x + 'px';
+            firework.style.top = y + 'px';
+            firework.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+            document.body.appendChild(firework);
+
+            // 파티클 생성 (폭죽 조각들)
+            for (let i = 0; i < 15; i++) {
+                setTimeout(() => {
+                    const particle = document.createElement('div');
+                    particle.className = 'particle';
+                    particle.style.left = x + 'px';
+                    particle.style.top = y + 'px';
+                    particle.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+
+                    const angle = (Math.PI * 2 * i) / 15;
+                    const velocity = 50 + Math.random() * 100;
+                    const vx = Math.cos(angle) * velocity;
+                    const vy = Math.sin(angle) * velocity;
+
+                    document.body.appendChild(particle);
+
+                    let posX = x;
+                    let posY = y;
+                    let opacity = 1;
+
+                    const animateParticle = () => {
+                        posX += vx * 0.02;
+                        posY += vy * 0.02 + 0.5; // 중력 효과
+                        opacity -= 0.01;
+
+                        particle.style.left = posX + 'px';
+                        particle.style.top = posY + 'px';
+                        particle.style.opacity = opacity;
+
+                        if (opacity > 0 && posY < window.innerHeight) {
+                            requestAnimationFrame(animateParticle);
+                        } else {
+                            particle.remove();
+                        }
+                    };
+
+                    requestAnimationFrame(animateParticle);
+                }, i * 20);
+            }
+
+            // 폭죽 중심점 제거
+            setTimeout(() => {
+                firework.remove();
+            }, 1500);
+        }
+
+        // 컨페티 (색종이 조각) 생성
+        function createConfetti() {
+            const colors = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#f9ca24', '#f0932b', '#eb4d4b', '#6c5ce7', '#a29bfe'];
+
+            const confetti = document.createElement('div');
+            confetti.className = 'confetti';
+            confetti.style.left = Math.random() * window.innerWidth + 'px';
+            confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+            confetti.style.animationDelay = Math.random() * 3 + 's';
+            confetti.style.animationDuration = (2 + Math.random() * 3) + 's';
+
+            document.body.appendChild(confetti);
+
+            setTimeout(() => {
+                confetti.remove();
+            }, 5000);
+        }
+
+        // 별 효과 생성
+        function createStar() {
+            const star = document.createElement('div');
+            star.className = 'star';
+            star.style.left = Math.random() * window.innerWidth + 'px';
+            star.style.top = Math.random() * window.innerHeight + 'px';
+            star.style.animationDelay = Math.random() * 2 + 's';
+
+            document.body.appendChild(star);
+
+            setTimeout(() => {
+                star.remove();
+            }, 4000);
+        }
+
+        // 효과들을 주기적으로 생성
+        setInterval(createFirework, 800);
+        setInterval(createConfetti, 200);
+        setInterval(createStar, 600);
+
+        // 초기 폭죽 몇 개 즉시 생성
+        for (let i = 0; i < 3; i++) {
+            setTimeout(createFirework, i * 300);
+        }
+
+        // 클릭 시 폭죽 생성
+        document.addEventListener('click', (e) => {
+            const colors = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#f9ca24', '#f0932b', '#eb4d4b', '#6c5ce7', '#a29bfe'];
+
+            for (let i = 0; i < 8; i++) {
+                setTimeout(() => {
+                    const particle = document.createElement('div');
+                    particle.className = 'particle';
+                    particle.style.left = e.clientX + 'px';
+                    particle.style.top = e.clientY + 'px';
+                    particle.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+
+                    const angle = (Math.PI * 2 * i) / 8;
+                    const velocity = 30 + Math.random() * 50;
+                    const vx = Math.cos(angle) * velocity;
+                    const vy = Math.sin(angle) * velocity;
+
+                    document.body.appendChild(particle);
+
+                    let posX = e.clientX;
+                    let posY = e.clientY;
+                    let opacity = 1;
+
+                    const animateParticle = () => {
+                        posX += vx * 0.03;
+                        posY += vy * 0.03 + 0.8;
+                        opacity -= 0.02;
+
+                        particle.style.left = posX + 'px';
+                        particle.style.top = posY + 'px';
+                        particle.style.opacity = opacity;
+
+                        if (opacity > 0 && posY < window.innerHeight) {
+                            requestAnimationFrame(animateParticle);
+                        } else {
+                            particle.remove();
+                        }
+                    };
+
+                    requestAnimationFrame(animateParticle);
+                }, i * 30);
+            }
+        });
+    </script>
+</body>
+</html>

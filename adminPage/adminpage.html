@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr"
+        crossorigin="anonymous">
+  <title>Admin Page</title>
+  <link rel="stylesheet" href="css/adminpage.css">
+</head>
+<body>
+  <!-- 상단 오른쪽 컨트롤 영역: 날짜/시간, 다크모드, 회원가입 버튼 -->
+  <div id="top-right-controls">
+    <div id="datetime-display">
+      <span id="current-date"></span>
+      <span id="current-time" class="fw-bold"></span>
+    </div>
+    <button id="dark-mode-toggle" class="btn btn-secondary btn-sm">다크모드</button>
+    <button id="signup-btn" class="btn btn-success btn-sm" onclick="gotoJoin()">회원가입</button>
+  </div>
+
+  <!-- 메인 콘텐츠 영역: 여기에 main-content-area 클래스 추가 -->
+  <div class="container mt-3 p-4 rounded-lg shadow-lg main-content-area">
+    <h3 class="mt-5 mb-3">신규 등록 상품</h3>
+    <form class="row row-cols-lg-auto g-3 align-items-center">
+      <div class="col-12">
+        <label class="visually-hidden" for="inlineFormSelectPref">Preference</label>
+        <select class="form-select" id="inlineFormSelectPref"
+                name="category_data_table">
+            <option value="category" selected>카테고리</option>
+            <option value="top">상의</option>
+            <option value="pants">하의</option>
+            <option value="shoes">신발</option>
+            <option value="etc">패션잡화</option>
+        </select>
+      </div>
+      <!-- 성별 셀렉터 추가 -->
+      <div class="col-12">
+        <label class="visually-hidden" for="genderSelect">Gender</label>
+        <select class="form-select" id="genderSelect" name="gender">
+          <option value="" selected>성별</option>
+          <option value="male">남성</option>
+          <option value="female">여성</option>
+        </select>
+      </div>
+      <div class="col-3">
+        <input name="findname" placeholder="제품명을 입력해주세요" autocomplete="off" class="form-control"/>
+      </div>
+      <div class="col-auto">
+        <button type="submit" class="btn btn-primary" title="조회">조회</button>
+      </div>
+    </form>
+
+    <div class="container mt-3"> <!-- 이 내부 컨테이너는 그대로 유지 -->
+      <table class="table table-sm">
+        <thead>
+          <tr>
+            <th>카테고리</th>
+            <th>성별</th>
+            <th>브랜드</th>
+            <th>상품명</th>
+            <th>가격</th>
+          </tr>
+        </thead>
+        <tbody id="product_data_Table">
+        </tbody>
+      </table>
+    </div>
+
+    <div class="pagination flex justify-content-center align-items-center mt-4">
+      <button id="prev-btn" class="pagination-btn">Previous</button>
+      <div id="page-numbers" class="page-numbers"></div>
+      <button id="next-btn" class="pagination-btn">Next</button>
+    </div>
+  </div>
+
+  <script src="js/adminpage.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+          crossorigin="anonymous"></script>
+</body>
+</html>
