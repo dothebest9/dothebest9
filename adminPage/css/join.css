@@ -82,6 +82,17 @@ body.dark-mode {
 }
 
 /*
+ * 유효성 검사 메시지 스타일 추가
+ * 비밀번호 유효성 검사 메시지에 대한 기본 스타일을 정의합니다.
+ */
+.validation-message {
+    font-size: 0.8rem; /* 메시지 글자 크기 설정 */
+    margin-top: 5px; /* 입력 필드와의 상단 간격 설정 */
+    height: 1.2rem; /* 메시지가 없을 때도 일정한 공간을 유지하여 레이아웃 흔들림 방지 */
+    /* 기본 색상은 JavaScript에서 text-danger/text-success 부트스트랩 클래스를 통해 제어됩니다. */
+}
+
+/*
  * 전역 스타일
  * 모든 요소에 적용되는 기본 스타일 및 HTML, body의 레이아웃을 정의합니다.
  */
