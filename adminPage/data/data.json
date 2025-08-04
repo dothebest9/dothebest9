@@ -1,0 +1,18 @@
+[
+    { "category": "상의", "brand": "Zara", "product": "오버핏 코튼 티셔츠", "price": "35,000", "gender": "남성" },
+    { "category": "하의", "brand": "Uniqlo", "product": "와이드핏 데님 팬츠", "price": "49,900", "gender": "여성" },
+    { "category": "신발", "brand": "Puma", "product": "스웨이드 클래식", "price": "89,000", "gender": "남성" },
+    { "category": "패션잡화", "brand": "Gentle Monster", "product": "선글라스 (블랙)", "price": "280,000", "gender": "여성" },
+    { "category": "상의", "brand": "H&M", "product": "크롭 니트 스웨터", "price": "42,000", "gender": "여성" },
+    { "category": "하의", "brand": "Levi\"s", "product": "501 오리지널 진", "price": "119,000", "gender": "남성" },
+    { "category": "신발", "brand": "Converse", "product": "척 70 하이탑", "price": "95,000", "gender": "남성" },
+    { "category": "패션잡화", "brand": "Samsonite", "product": "여행용 캐리어 (20인치)", "price": "150,000", "gender": "여성" },
+    { "category": "상의", "brand": "Lacoste", "product": "클래식 폴로 셔츠", "price": "129,000", "gender": "남성" },
+    { "category": "하의", "brand": "Adidas", "product": "트랙 조거 팬츠", "price": "75,000", "gender": "여성" },
+    { "category": "신발", "brand": "New Balance", "product": "574 스니커즈", "price": "109,000", "gender": "남성" },
+    { "category": "패션잡화", "brand": "Louis Vuitton", "product": "모노그램 지갑", "price": "850,000", "gender": "여성" },
+    { "category": "상의", "brand": "Nike", "product": "드라이핏 트레이닝 티", "price": "55,000", "gender": "남성" },
+    { "category": "하의", "brand": "Zara", "product": "슬랙스 (그레이)", "price": "59,000", "gender": "여성" },
+    { "category": "신발", "brand": "Vans", "product": "올드스쿨 스케이트 슈즈", "price": "79,000", "gender": "남성" },
+    { "category": "패션잡화", "brand": "Rolex", "product": "서브마리너 시계", "price": "15,000,000", "gender": "남성" }
+]
