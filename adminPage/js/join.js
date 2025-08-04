@@ -1,81 +1,167 @@
-const congratulations = () => {
-    // 모든 필수 입력 필드 요소를 가져옵니다.
-    const idInput = document.getElementsByName('id')[0];
-    const pw1Input = document.getElementsByName('pw1')[0];
-    const pw2Input = document.getElementsByName('pw2')[0];
-    const nameInput = document.getElementsByName('name')[0];
-    const phoneInput = document.getElementsByName('phone')[0];
-    const emailInput = document.getElementsByName('email')[0];
-
-    // 입력된 값이 비어 있는지, 혹은 공백만 있는지 확인합니다.
-    if (idInput.value.trim() === '' ||
-        pw1Input.value.trim() === '' ||
-        pw2Input.value.trim() === '' ||
-        nameInput.value.trim() === '' ||
-        phoneInput.value.trim() === '' ||
-        emailInput.value.trim() === '') {
-
-        // 사용자에게 모든 정보를 입력하라고 알려줍니다.
-        alert("모든 정보를 입력해주세요.");
-
-        // 함수 실행을 여기서 중단합니다.
-        return;
+const gotoJoin = () => {
+    window.location.href = "./join.html"
+}
+// --- 제품 데이터 로딩 함수 ---
+const fetchProductData = async () => {
+    try {
+        const res = await fetch("data/data.json");
+        if (!res.ok) throw new Error(`HTTP 오류: ${res.status}`);
+        return await res.json();
+    } catch (error) {
+        console.error("데이터 로딩 오류", error);
+        return [];
     }
-    //비밀번호가 일치하는지 확인
-    if (pw1Input.value.trim() !== pw2Input.value.trim()){
-        alert("비밀번호가 일치하지않습니다.");
-        return;
-    }
-    alert(
-            `id:${document.getElementsByName('id')[0].value}
-             name:${document.getElementsByName('name')[0].value}
-             phone:${document.getElementsByName('phone')[0].value}
-             gender:${document.getElementsByName('gender')[0].value}
-             email:${document.getElementsByName('email')[0].value}
-            `)
+};
 
-    window.location.href = "./congratulations.html"
+// --- DOM 요소 및 전역 변수 ---
+const itemsPerPage = 5;
+const productDataTable = document.getElementById('product_data_Table');
+const pageNumbersDiv = document.getElementById('page-numbers');
+const prevBtn = document.getElementById('prev-btn');
+const nextBtn = document.getElementById('next-btn');
+
+const form = document.querySelector('form');
+const categorySelect = document.getElementById('inlineFormSelectPref');
+const genderSelect = document.getElementById('genderSelect');
+const findNameInput = document.querySelector('input[name="findname"]');
+
+let currentPage = 1;
+let product_data = [];
+let totalPages = 0;
+
+// --- 필터링된 데이터를 반환하는 함수 (성별 필터 추가) ---
+function getFilteredData() {
+    let filteredData = product_data;
+
+    // 1. 카테고리 필터링
+    const selectedCategory = categorySelect.value;
+    if (selectedCategory && selectedCategory !== 'category') {
+        const categoryMap = {
+            "top": "상의",
+            "pants": "하의",
+            "shoes": "신발",
+            "etc": "패션잡화"
+        };
+        const jsonCategory = categoryMap[selectedCategory];
+        if (jsonCategory) {
+            filteredData = filteredData.filter(item => item.category === jsonCategory);
+        }
+    }
+
+    // 2. 성별 필터링
+    const selectedGender = genderSelect.value;
+    if (selectedGender) {
+        // HTML의 option value와 JSON의 gender 값이 일치하도록 수정
+        // 예: HTML value="male" -> JSON gender="남성"
+        const genderMap = {
+            "male": "남성",
+            "female": "여성"
+        };
+        const jsonGender = genderMap[selectedGender];
+        if (jsonGender) {
+            filteredData = filteredData.filter(item => item.gender === jsonGender);
+        }
+    }
+
+    // 3. 제품명 필터링 (대소문자 구분 없이)
+    const findName = findNameInput.value.toLowerCase();
+    if (findName) {
+        filteredData = filteredData.filter(item => item.product.toLowerCase().includes(findName));
+    }
+
+    return filteredData;
 }
 
-const gotoAdminpage= () => {
-    window.location.href = "./adminpage.html"
+// --- 모든 페이지 렌더링 함수들 ---
+function renderData(page) {
+    productDataTable.innerHTML = '';
+    const filteredData = getFilteredData();
+
+    totalPages = Math.ceil(filteredData.length / itemsPerPage);
+
+    if (currentPage > totalPages) {
+        currentPage = totalPages > 0 ? totalPages : 1;
+    }
+
+    const start = (currentPage - 1) * itemsPerPage;
+    const end = start + itemsPerPage;
+    const pageData = filteredData.slice(start, end);
+
+    pageData.forEach(item => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td>${item.category}</td>
+            <td>${item.gender}</td>
+            <td>${item.brand}</td>
+            <td>${item.product}</td>
+            <td>${item.price}</td>
+        `;
+        productDataTable.appendChild(row);
+    });
+
+    renderPageNumbers();
+    updatePaginationButtons();
+    updateActiveButton();
 }
-//제출이벤트 받기(이벤트 핸들링)
-const form = document.getElementById("form");
 
-form.addEventListener("submit", function (event) {
-    event.preventDefault();//기존 기능 차단
-
-    let userId = event.target.id.value;
-    let userPw1 = event.target.pw1.value;
-    let userPw2 = event.target.pw2.value;
-    let userName = event.target.name.value;
-    let userPhone = event.target.phone.value;
-    let userPosition = event.target.position.value;
-    let userGender = event.target.gender.value;
-    let userEmail = event.target.email.value;
-    let userIntro = event.target.intro.value;
-
-    console.log(userId, userPw1, userPw2, userName, userPhone,
-        userPosition,userGender,userEmail,userIntro,userIntro);
-    if(userId.length <6 ){
-        alert("아이디가 너무 짧습니다. 6자 이상 입력해주세요.");
-        return
+function renderPageNumbers() {
+    pageNumbersDiv.innerHTML = '';
+    for (let i = 1; i <= totalPages; i++) {
+        const button = document.createElement('button');
+        button.textContent = i;
+        button.classList.add('page-number-btn', 'pagination-btn');
+        if (i === currentPage) { button.classList.add('active'); }
+        button.addEventListener('click', () => {
+            currentPage = i;
+            renderData(currentPage);
+        });
+        pageNumbersDiv.appendChild(button);
     }
-    if(userPw1 != userPw2) {
-        alert("비밀번호가 일치하지 않습니다.");
-        return
+}
+
+function updatePaginationButtons() {
+    prevBtn.disabled = currentPage === 1;
+    nextBtn.disabled = currentPage >= totalPages;
+}
+
+function updateActiveButton() {
+    document.querySelectorAll('.page-number-btn').forEach(btn => {
+        btn.classList.remove('active');
+    });
+    const currentBtn = document.querySelector(`.page-number-btn:nth-child(${currentPage})`);
+    if (currentBtn) { currentBtn.classList.add('active'); }
+}
+
+// --- 이벤트 리스너 ---
+prevBtn.addEventListener('click', () => {
+    if (currentPage > 1) {
+        currentPage--;
+        renderData(currentPage);
     }
+});
 
-    document.body.innerHTML = ""
-    document.write(`<p>${userId}님 환영합니다</p>`);
-    document.write(`<p>회원 가입 시 입력하신 내역은 다음과 같습니다.</p>`);
-    document.write(`<p>아이디 : ${userId}</p>`);
-    document.write(`<p>이름 : ${userName}</p>`);
-    document.write(`<p>전화번호 : ${userPhone}</p>`);
-    document.write(`<p>원하는 직무 : ${userPosition}</p>`);
+nextBtn.addEventListener('click', () => {
+    if (currentPage < totalPages) {
+        currentPage++;
+        renderData(currentPage);
+    }
+});
 
-})
+form.addEventListener('submit', (event) => {
+    event.preventDefault();
+    currentPage = 1;
+    renderData(currentPage);
+});
+
+
+// --- 초기화 및 로딩 로직 ---
+const initialize = async () => {
+    product_data = await fetchProductData();
+    renderData(currentPage);
+};
+
+initialize();
+
 // --- 날짜와 시간 표시 기능 ---
 function updateDateTime() {
     const now = new Date();
@@ -104,5 +190,4 @@ darkModeToggle.addEventListener('click', () => {
     } else {
         localStorage.setItem('darkMode', 'disabled');
     }
-
 });
