@@ -38,7 +38,7 @@ const congratulations = () => {
 }
 
 const gotoAdminpage= () => {
-    window.location.href = "./adminpage2.html"
+    window.location.href = "./adminpage.html"
 }
 //제출이벤트 받기(이벤트 핸들링)
 const form = document.getElementById("form");
@@ -104,4 +104,5 @@ darkModeToggle.addEventListener('click', () => {
     } else {
         localStorage.setItem('darkMode', 'disabled');
     }
+
 });
